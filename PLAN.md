@@ -44,8 +44,7 @@ Ersetzt **Sapphire** auf dem Discord-Server **The Aviary** (Nhywyll).
 - [x] Slash-Befehle fuer Mods (/help, /test, /text, /status), englisch, lokal
   geprueft. Jeans Wunsch 22.10.2026: Bedienung in Discord statt im Dashboard,
   Tests in den Mod-Kanal #notepad.
-- [ ] Kanal-ID von #notepad als `DISCORD_KANAL_TEST` in die `.env`, Bird
-  Keeper in #notepad Lese- und Schreibrecht geben (Jean)
+- [x] Bird Keeper in #notepad freigegeben (Jean), `DISCORD_KANAL_TEST` gesetzt
 - [ ] Sapphire: Willkommen und Feeds abschalten bzw. Bot entfernen (Jean)
 - [ ] Erste echte Meldungen beobachten: Beitritt, naechster Stream, naechstes Video und Post
 
@@ -57,6 +56,7 @@ Ersetzt **Sapphire** auf dem Discord-Server **The Aviary** (Nhywyll).
 | Twitch live | 1129340984711458836 |
 | YouTube (#clips) | 1310991220805468201 |
 | Bluesky | 1320739525797875812 |
+| Mod-Tests /test (#notepad) | 1254337518405423165 |
 
 `DISCORD_KANAL_FEEDS` steht in der `.env` auf dem Twitch-Kanal, weil
 `einrichten.sh` es verlangt; die drei eigenen Kanaele gehen vor.
