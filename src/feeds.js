@@ -38,7 +38,7 @@ export async function twitchStream() {
   if (!antwort.ok) throw new Error(`Twitch streams: ${antwort.status}`);
   const [stream] = (await antwort.json()).data;
   if (!stream) return null;
-  return { id: stream.id, titel: stream.title, spiel: stream.game_name || 'ohne Kategorie', start: stream.started_at };
+  return { id: stream.id, titel: stream.title, spiel: stream.game_name || 'no category', start: stream.started_at };
 }
 
 // --- YouTube --------------------------------------------------------------
