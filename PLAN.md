@@ -45,6 +45,8 @@ Ersetzt **Sapphire** auf dem Discord-Server **The Aviary** (Nhywyll).
   geprueft. Jeans Wunsch 22.10.2026: Bedienung in Discord statt im Dashboard,
   Tests in den Mod-Kanal #notepad.
 - [x] Bird Keeper in #notepad freigegeben (Jean), `DISCORD_KANAL_TEST` gesetzt
+- [x] Live geprueft 22.10.2026: `/help` und `/test type:welcome` in #notepad
+  funktionieren (Antwort nur fuer Jean sichtbar, Probe ohne Ping)
 - [ ] Sapphire: Willkommen und Feeds abschalten bzw. Bot entfernen (Jean)
 - [ ] Erste echte Meldungen beobachten: Beitritt, naechster Stream, naechstes Video und Post
 
