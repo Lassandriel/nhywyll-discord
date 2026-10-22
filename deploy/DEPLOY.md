@@ -61,3 +61,11 @@ gepostet. Laeuft gerade ein Stream, wird er einmal gemeldet.
 - Texte aendern: `texte.json` bearbeiten und pushen, der Container zieht
   spaetestens zehn Minuten spaeter nach.
 - Protokoll: `pct exec 103 -- journalctl -u nhywyll-discord -n 30 --no-pager`
+
+## Stolperstein Developer Portal
+
+**Public Bot** ausschalten scheitert mit "Private application cannot have a
+default authorization link", solange unter **Installation -> Install Link**
+noch *Discord Provided Link* steht. Erst dort auf **None** stellen und
+speichern. Achtung: Schlaegt das Speichern fehl, ist **nichts** gespeichert,
+auch nicht der Server Members Intent.

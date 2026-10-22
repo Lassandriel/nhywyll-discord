@@ -39,8 +39,10 @@ Ersetzt **Sapphire** auf dem Discord-Server **The Aviary** (Nhywyll).
 - [x] Feeds Twitch, YouTube, Bluesky
 - [x] Lokal geprueft (Feeds gegen die echten Quellen, Texte, Gateway-Logik)
 - [x] GitHub-Repo `Lassandriel/nhywyll-discord` (oeffentlich) angelegt und gepusht, 22.10.2026
-- [ ] Discord-Anwendung anlegen, Token in `.env` (Jean, siehe DEPLOY.md)
-- [ ] Auf CT 103 einrichten, Sapphire danach vom Server werfen
+- [x] Discord-Anwendung "Bird Keeper" angelegt (App-ID 1562728450135949373), Token in `.env`
+- [x] Auf CT 103 eingerichtet, laeuft seit 22.10.2026 (online in Discord)
+- [ ] Sapphire: Willkommen und Feeds abschalten bzw. Bot entfernen (Jean)
+- [ ] Erste echte Meldungen beobachten: Beitritt, naechster Stream, naechstes Video und Post
 
 ## Kanaele auf The Aviary (nicht geheim)
 
