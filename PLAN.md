@@ -47,6 +47,8 @@ Ersetzt **Sapphire** auf dem Discord-Server **The Aviary** (Nhywyll).
 - [x] Bird Keeper in #notepad freigegeben (Jean), `DISCORD_KANAL_TEST` gesetzt
 - [x] Live geprueft 22.10.2026: `/help` und `/test type:welcome` in #notepad
   funktionieren (Antwort nur fuer Jean sichtbar, Probe ohne Ping)
+- [x] Ping-Rollen twitchnotif/youtubenotif/blsknotif auf CT 103 gesetzt,
+  Neustart sauber (22.10.2026, Protokoll: angemeldet, Slash-Befehle angemeldet)
 - [ ] Sapphire: Willkommen und Feeds abschalten bzw. Bot entfernen (Jean)
 - [ ] Erste echte Meldungen beobachten: Beitritt, naechster Stream, naechstes Video und Post
 
