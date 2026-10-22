@@ -38,6 +38,6 @@ Ersetzt **Sapphire** auf dem Discord-Server **The Aviary** (Nhywyll).
 - [x] Gateway mit Willkommen/Abschied
 - [x] Feeds Twitch, YouTube, Bluesky
 - [x] Lokal geprueft (Feeds gegen die echten Quellen, Texte, Gateway-Logik)
-- [ ] GitHub-Repo anlegen und pushen (Jean)
+- [x] GitHub-Repo `Lassandriel/nhywyll-discord` (oeffentlich) angelegt und gepusht, 22.10.2026
 - [ ] Discord-Anwendung anlegen, Token in `.env` (Jean, siehe DEPLOY.md)
 - [ ] Auf CT 103 einrichten, Sapphire danach vom Server werfen
