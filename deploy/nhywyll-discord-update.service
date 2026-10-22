@@ -1,0 +1,11 @@
+[Unit]
+Description=Discord-Bot: neue Version von GitHub holen
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/nhywyll-discord
+Environment=HOME=/root
+ExecStart=/bin/bash /opt/nhywyll-discord/deploy/auto-update.sh
+SyslogIdentifier=nhywyll-discord-update

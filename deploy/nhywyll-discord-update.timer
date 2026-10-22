@@ -1,0 +1,10 @@
+[Unit]
+Description=Discord-Bot: sucht alle 10 Minuten nach einer neuen Version
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=10min
+Unit=nhywyll-discord-update.service
+
+[Install]
+WantedBy=timers.target

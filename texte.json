@@ -1,0 +1,9 @@
+{
+  "_hinweis": "Platzhalter in {geschweiften Klammern} fuellt der Bot. Nach dem Aendern pushen, der Container zieht nach und startet neu.",
+  "willkommen": "🐔 Willkommen im Aviary, {nutzer}! Schau dich in Ruhe um - Stream-Zeiten findest du unter https://twitch.tv/nhywyll/schedule",
+  "abschied": "👋 {name} hat das Aviary verlassen. Guten Flug!",
+  "twitch": "🔴 **Nhywyll ist live!** {ping}\n**{titel}** - {spiel}\nhttps://twitch.tv/{kanal}",
+  "youtube": "📺 Neues Video: **{titel}**\n{link}",
+  "youtube_short": "🎬 Neuer Short: **{titel}**\n{link}",
+  "bluesky": "🦋 Neu auf Bluesky:\n{link}"
+}

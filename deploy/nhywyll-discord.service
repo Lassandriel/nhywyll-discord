@@ -1,0 +1,40 @@
+# Autostart-Dienst fuer den Discord-Bot.
+# Nach /etc/systemd/system/nhywyll-discord.service kopieren.
+
+[Unit]
+Description=Nhywyll Discord-Bot (Willkommen, Feeds)
+Documentation=https://github.com/Lassandriel/nhywyll-discord
+After=network-online.target
+Wants=network-online.target
+
+# Gibt der Bot zehnmal in fuenf Minuten auf, ist etwas grundsaetzlich
+# kaputt - dann nicht weiter im Kreis starten.
+StartLimitIntervalSec=300
+StartLimitBurst=10
+
+[Service]
+Type=simple
+User=bot
+WorkingDirectory=/opt/nhywyll-discord
+ExecStart=/usr/bin/node --no-warnings src/index.js
+
+# Nach einem Absturz automatisch neu starten. Discord kann kurz weg sein,
+# deshalb grosszuegig, aber mit Bremse gegen Dauerschleifen.
+Restart=always
+RestartSec=10
+
+# Absicherung: der Dienst darf nur an seine eigenen Daten.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelTunables=true
+ReadWritePaths=/opt/nhywyll-discord/daten /opt/nhywyll-discord/.env
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=nhywyll-discord
+
+[Install]
+WantedBy=multi-user.target

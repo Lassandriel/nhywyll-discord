@@ -1,0 +1,13 @@
+{
+  "name": "nhywyll-discord",
+  "version": "0.1.0",
+  "description": "Discord-Bot fuer The Aviary: Willkommen/Abschied und Social-Feeds (ersetzt Sapphire)",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node --no-warnings src/index.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
