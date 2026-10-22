@@ -1,83 +1,83 @@
-// Nhywyll-Discord-Bot: Willkommen/Abschied und Social-Feeds fuer The Aviary.
-// Ersetzt Sapphire, siehe PLAN.md.
-import { konfig, pruefeGrundkonfig } from './konfig.js';
-import { api, sende, verbinde } from './discord.js';
+// Nhywyll Discord bot: welcome/leave messages and social feeds for The Aviary.
+// Replaces Sapphire, see PLAN.md.
+import { config, checkConfig } from './config.js';
+import { api, send, connect } from './discord.js';
 import { twitchStream, youtubeVideos, blueskyPosts } from './feeds.js';
-import { lies, setze, neueEintraege, laufzeit } from './stand.js';
-import { meldeBefehleAn, beiBefehl } from './befehle.js';
-import * as meldung from './meldungen.js';
+import { get, set, newEntries, runtime } from './state.js';
+import { registerCommands, onCommand } from './commands.js';
+import * as message from './messages.js';
 
-const SEKUNDE = 1000;
-const MINUTE = 60 * SEKUNDE;
-const NEUSTART_PAUSE = 30 * MINUTE; // Stream nach Absturz neu gestartet: nicht noch mal melden
+const SECOND = 1000;
+const MINUTE = 60 * SECOND;
+const RESTART_GRACE = 30 * MINUTE; // stream restarted after a crash: don't announce again
 
-pruefeGrundkonfig();
+checkConfig();
 
-const melde = (kanal, { inhalt, erwaehnen }) => sende(kanal, inhalt, erwaehnen);
+const post = (channel, { content, mentions }) => send(channel, content, mentions);
 
-// --- Discord-Ereignisse ---------------------------------------------------
+// --- Discord events -------------------------------------------------------
 
-// Nur Ereignisse vom Server, zu dem der Willkommenskanal gehoert - sollte der
-// Bot noch auf anderen Servern sein, bleiben die aussen vor.
-const { guild_id: server } = await api(`channels/${konfig.kanalWillkommen}`);
+// Only events from the server the welcome channel belongs to - should the
+// bot ever be on other servers, those are ignored.
+const { guild_id: guildId } = await api(`channels/${config.welcomeChannel}`);
 
-verbinde(async (ereignis, d) => {
-  if (ereignis === 'READY') return meldeBefehleAn(d.application.id, server);
-  if (d?.guild_id !== server) return;
-  if (ereignis === 'INTERACTION_CREATE') return beiBefehl(d);
+connect(async (event, d) => {
+  if (event === 'READY') return registerCommands(d.application.id, guildId);
+  if (d?.guild_id !== guildId) return;
+  if (event === 'INTERACTION_CREATE') return onCommand(d);
   if (d.user?.bot) return;
-  if (ereignis === 'GUILD_MEMBER_ADD') {
-    await melde(konfig.kanalWillkommen, meldung.willkommen(d.user));
+  if (event === 'GUILD_MEMBER_ADD') {
+    await post(config.welcomeChannel, message.welcome(d.user));
     console.log(`Willkommen: ${d.user.username}`);
-  } else if (ereignis === 'GUILD_MEMBER_REMOVE') {
-    await melde(konfig.kanalWillkommen, meldung.abschied(d.user));
+  } else if (event === 'GUILD_MEMBER_REMOVE') {
+    await post(config.welcomeChannel, message.leave(d.user));
     console.log(`Abschied: ${d.user.username}`);
   }
 });
 
 // --- Feeds ----------------------------------------------------------------
 
-async function pruefeTwitch() {
+async function checkTwitch() {
   const stream = await twitchStream();
   if (!stream) return;
-  const letzte = lies('twitch') ?? {};
-  if (letzte.id === stream.id) return;
-  setze('twitch', { id: stream.id, zeit: Date.now() });
-  if (letzte.zeit && Date.now() - letzte.zeit < NEUSTART_PAUSE) {
+  const last = get('twitch') ?? {};
+  if (last.id === stream.id) return;
+  set('twitch', { id: stream.id, zeit: Date.now() }); // 'zeit' kept: stored data
+  if (last.zeit && Date.now() - last.zeit < RESTART_GRACE) {
     console.log(`Twitch: neuer Stream ${stream.id} kurz nach dem letzten, keine zweite Meldung`);
     return;
   }
-  await melde(konfig.kanalTwitch, meldung.live(stream));
-  console.log(`Twitch: live gemeldet (${stream.titel})`);
+  await post(config.twitchChannel, message.live(stream));
+  console.log(`Twitch: live gemeldet (${stream.title})`);
 }
 
-async function pruefeYoutube() {
-  for (const video of neueEintraege('youtube', await youtubeVideos())) {
-    await melde(konfig.kanalYoutube, meldung.video(video));
-    console.log(`YouTube: ${video.titel}`);
+async function checkYoutube() {
+  for (const video of newEntries('youtube', await youtubeVideos())) {
+    await post(config.youtubeChannel, message.video(video));
+    console.log(`YouTube: ${video.title}`);
   }
 }
 
-async function pruefeBluesky() {
-  for (const post of neueEintraege('bluesky', await blueskyPosts())) {
-    await melde(konfig.kanalBluesky, meldung.post(post));
-    console.log(`Bluesky: ${post.link}`);
+async function checkBluesky() {
+  for (const p of newEntries('bluesky', await blueskyPosts())) {
+    await post(config.blueskyChannel, message.post(p));
+    console.log(`Bluesky: ${p.link}`);
   }
 }
 
-// Jede Quelle fuer sich: faellt eine aus, laufen die anderen weiter.
-// Erfolg und Fehler landen in laufzeit, fuer /status.
-function regelmaessig(name, aufgabe, abstand) {
-  const q = (laufzeit.quellen[name] = {});
-  const lauf = () => aufgabe().then(
-    () => { q.ok = Date.now(); },
-    (f) => { q.fehler = f.message; q.fehlerZeit = Date.now(); console.error(`${name}: ${f.message}`); },
+// Each source on its own: if one fails, the others keep running.
+// Success and errors go into runtime, for /status.
+function every(name, task, interval) {
+  const src = (runtime.sources[name] = {});
+  const run = () => task().then(
+    () => { src.ok = Date.now(); },
+    (err) => { src.error = err.message; src.errorTime = Date.now(); console.error(`${name}: ${err.message}`); },
   );
-  lauf();
-  setInterval(lauf, abstand);
+  run();
+  setInterval(run, interval);
 }
 
-regelmaessig('Twitch', pruefeTwitch, MINUTE);
-regelmaessig('YouTube', pruefeYoutube, 5 * MINUTE);
-regelmaessig('Bluesky', pruefeBluesky, 5 * MINUTE);
-console.log(`Feeds aktiv: twitch.tv/${konfig.twitchKanal}, YouTube ${konfig.youtubeKanalId}, Bluesky @${konfig.blueskyHandle}`);
+every('Twitch', checkTwitch, MINUTE);
+every('YouTube', checkYoutube, 5 * MINUTE);
+every('Bluesky', checkBluesky, 5 * MINUTE);
+console.log(`Feeds aktiv: twitch.tv/${config.twitchLogin}, YouTube ${config.youtubeChannelId}, Bluesky @${config.blueskyHandle}`);

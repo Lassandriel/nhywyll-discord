@@ -30,7 +30,7 @@ Ersetzt **Sapphire** auf dem Discord-Server **The Aviary** (Nhywyll).
 - **Live-Meldung einmal je Stream:** Merkt sich die Stream-ID; startet der
   Stream nach einem Absturz innerhalb von 30 Min. neu, wird nicht noch
   einmal gemeldet.
-- **Texte auf Englisch** (Server und Stream sind englisch), sie stehen in `texte.json` (Platzhalter in `{geschweiften}`), damit
+- **Texte auf Englisch** (Server und Stream sind englisch), sie stehen in `texts.json` (Platzhalter in `{geschweiften}`), damit
   Jean sie ohne Code aendern kann.
 
 ## Stand

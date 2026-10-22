@@ -58,7 +58,7 @@ gepostet. Laeuft gerade ein Stream, wird er einmal gemeldet.
 
 - Sapphire in Discord vom Server entfernen (oder dessen Willkommen und Feeds
   abschalten), sonst kommt alles doppelt.
-- Texte aendern: `texte.json` bearbeiten und pushen, der Container zieht
+- Texte aendern: `texts.json` bearbeiten und pushen, der Container zieht
   spaetestens zehn Minuten spaeter nach.
 - Protokoll: `pct exec 103 -- journalctl -u nhywyll-discord -n 30 --no-pager`
 

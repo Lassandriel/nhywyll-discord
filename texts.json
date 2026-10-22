@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Standardtexte. Mods aendern sie in Discord mit /text set - das landet in daten/stand.json und geht diesen Texten vor. Platzhalter in {geschweiften Klammern} fuellt der Bot.",
+  "_note": "Standardtexte. Mods aendern sie in Discord mit /text set - das landet in daten/stand.json (Schluessel 'texte') und geht diesen Texten vor. Platzhalter in {geschweiften Klammern} fuellt der Bot.",
   "welcome": "🐔 Welcome to The Aviary, {user}! Make yourself at home - stream times are at https://twitch.tv/nhywyll/schedule",
   "leave": "👋 {name} has left The Aviary. Fly safe!",
   "twitch": "🔴 **Nhywyll is live!** {ping}\n**{title}** - {game}\n{link}",

@@ -4,6 +4,9 @@ Ersetzt Sapphire auf **The Aviary**: Willkommen/Abschied und Feeds (Twitch
 live, YouTube, Bluesky). Container **103**, Dienst `nhywyll-discord`,
 Ordner `/opt/nhywyll-discord`, Nutzer `bot`. Warum so: `PLAN.md`.
 
+- **Code auf Englisch** (Bezeichner, Kommentare, Commits); Protokollzeilen
+  und Doku deutsch. `.env`-Namen und gespeicherte Schluessel in
+  `daten/stand.json` (`texte`, `zeit`) bleiben deutsch - laufen schon auf CT 103.
 - **Keine Abhaengigkeiten einfuehren** - Gateway laeuft ueber das eingebaute
   `WebSocket`, wie EventSub im Twitch-Bot.
 - **Nicht pushen**, ohne dass Jean es will. Ein Push wird nach spaetestens
