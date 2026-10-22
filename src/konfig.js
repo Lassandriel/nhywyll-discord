@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -18,6 +18,9 @@ export const konfig = {
   kanalBluesky: env('DISCORD_KANAL_BLUESKY') || env('DISCORD_KANAL_FEEDS'),
   // Optional: diese Rolle wird bei der Live-Meldung angepingt.
   rolleLive: env('DISCORD_ROLLE_LIVE'),
+  // Hierhin schickt /test seine Probemeldungen (der Mod-Kanal #notepad).
+  // Leer: in den Kanal, in dem /test benutzt wurde.
+  kanalTest: env('DISCORD_KANAL_TEST'),
 
   twitchClientId: env('TWITCH_CLIENT_ID'),
   twitchClientSecret: env('TWITCH_CLIENT_SECRET'),
@@ -25,13 +28,6 @@ export const konfig = {
   youtubeKanalId: env('YOUTUBE_KANAL_ID', 'UCtiQlpGmReXnpVsuhRxdc3A'),
   blueskyHandle: env('BLUESKY_HANDLE', 'nhywyll.com'),
 };
-
-export const texte = JSON.parse(readFileSync(path.join(wurzel, 'texte.json'), 'utf8'));
-
-// Ersetzt {name} durch werte.name; unbekannte Platzhalter bleiben stehen.
-export function fuelle(vorlage, werte) {
-  return vorlage.replace(/\{(\w+)\}/g, (ganz, name) => (name in werte ? String(werte[name]) : ganz));
-}
 
 export function pruefeGrundkonfig() {
   const fehlt = [];

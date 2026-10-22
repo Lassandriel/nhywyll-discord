@@ -41,6 +41,11 @@ Ersetzt **Sapphire** auf dem Discord-Server **The Aviary** (Nhywyll).
 - [x] GitHub-Repo `Lassandriel/nhywyll-discord` (oeffentlich) angelegt und gepusht, 22.10.2026
 - [x] Discord-Anwendung "Bird Keeper" angelegt (App-ID 1562728450135949373), Token in `.env`
 - [x] Auf CT 103 eingerichtet, laeuft seit 22.10.2026 (online in Discord)
+- [x] Slash-Befehle fuer Mods (/help, /test, /text, /status), englisch, lokal
+  geprueft. Jeans Wunsch 22.10.2026: Bedienung in Discord statt im Dashboard,
+  Tests in den Mod-Kanal #notepad.
+- [ ] Kanal-ID von #notepad als `DISCORD_KANAL_TEST` in die `.env`, Bird
+  Keeper in #notepad Lese- und Schreibrecht geben (Jean)
 - [ ] Sapphire: Willkommen und Feeds abschalten bzw. Bot entfernen (Jean)
 - [ ] Erste echte Meldungen beobachten: Beitritt, naechster Stream, naechstes Video und Post
 

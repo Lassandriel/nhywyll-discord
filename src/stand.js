@@ -39,3 +39,7 @@ export function neueEintraege(feed, eintraege) {
   if (neu.length) setze(feed, [...neu.map((e) => e.id), ...gesehen].slice(0, MERKEN));
   return neu.reverse();
 }
+
+// Nur im Speicher: wann jede Quelle zuletzt geklappt hat und der letzte
+// Fehler. Fuer /status, damit Mods sehen, ob ein Feed haengt.
+export const laufzeit = { start: Date.now(), quellen: {} };

@@ -1,9 +1,9 @@
 {
-  "_hinweis": "Platzhalter in {geschweiften Klammern} fuellt der Bot. Texte auf Englisch, wie der ganze Nhywyll-Kanal. Nach dem Aendern pushen, der Container zieht nach und startet neu.",
-  "willkommen": "🐔 Welcome to The Aviary, {nutzer}! Make yourself at home - stream times are at https://twitch.tv/nhywyll/schedule",
-  "abschied": "👋 {name} has left The Aviary. Fly safe!",
-  "twitch": "🔴 **Nhywyll is live!** {ping}\n**{titel}** - {spiel}\nhttps://twitch.tv/{kanal}",
-  "youtube": "📺 New video: **{titel}**\n{link}",
-  "youtube_short": "🎬 New Short: **{titel}**\n{link}",
+  "_hinweis": "Standardtexte. Mods aendern sie in Discord mit /text set - das landet in daten/stand.json und geht diesen Texten vor. Platzhalter in {geschweiften Klammern} fuellt der Bot.",
+  "welcome": "🐔 Welcome to The Aviary, {user}! Make yourself at home - stream times are at https://twitch.tv/nhywyll/schedule",
+  "leave": "👋 {name} has left The Aviary. Fly safe!",
+  "twitch": "🔴 **Nhywyll is live!** {ping}\n**{title}** - {game}\n{link}",
+  "youtube": "📺 New video: **{title}**\n{link}",
+  "youtube_short": "🎬 New Short: **{title}**\n{link}",
   "bluesky": "🦋 New on Bluesky:\n{link}"
 }
