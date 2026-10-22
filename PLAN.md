@@ -60,5 +60,14 @@ Ersetzt **Sapphire** auf dem Discord-Server **The Aviary** (Nhywyll).
 | Bluesky | 1320739525797875812 |
 | Mod-Tests /test (#notepad) | 1254337518405423165 |
 
+Ping-Rollen (Mitglieder holen sie sich selbst; jede Meldung pingt nur ihre
+Rolle, `/test` pingt nie):
+
+| Rolle | Rollen-ID | `.env` |
+|---|---|---|
+| twitchnotif | 1310981394700177409 | `DISCORD_ROLLE_LIVE` |
+| youtubenotif | 1310991430851756042 | `DISCORD_ROLLE_YOUTUBE` |
+| blsknotif | 1310990661016621117 | `DISCORD_ROLLE_BLUESKY` |
+
 `DISCORD_KANAL_FEEDS` steht in der `.env` auf dem Twitch-Kanal, weil
 `einrichten.sh` es verlangt; die drei eigenen Kanaele gehen vor.

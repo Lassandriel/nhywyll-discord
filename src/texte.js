@@ -13,10 +13,10 @@ delete standard._hinweis;
 export const PLATZHALTER = {
   welcome: '{user} (mention), {name}',
   leave: '{name}',
-  twitch: '{title}, {game}, {link}, {ping} (live role, if set)',
-  youtube: '{title}, {link}',
-  youtube_short: '{title}, {link}',
-  bluesky: '{link}, {text}',
+  twitch: '{title}, {game}, {link}, {ping} (twitchnotif role)',
+  youtube: '{title}, {link}, {ping} (youtubenotif role)',
+  youtube_short: '{title}, {link}, {ping} (youtubenotif role)',
+  bluesky: '{link}, {text}, {ping} (blsknotif role)',
 };
 
 export const ARTEN = Object.keys(PLATZHALTER);

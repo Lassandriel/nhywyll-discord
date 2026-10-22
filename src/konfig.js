@@ -16,8 +16,11 @@ export const konfig = {
   kanalTwitch: env('DISCORD_KANAL_TWITCH') || env('DISCORD_KANAL_FEEDS'),
   kanalYoutube: env('DISCORD_KANAL_YOUTUBE') || env('DISCORD_KANAL_FEEDS'),
   kanalBluesky: env('DISCORD_KANAL_BLUESKY') || env('DISCORD_KANAL_FEEDS'),
-  // Optional: diese Rolle wird bei der Live-Meldung angepingt.
+  // Optional: diese Rollen werden bei der jeweiligen Meldung angepingt
+  // (auf The Aviary: twitchnotif, youtubenotif, blsknotif).
   rolleLive: env('DISCORD_ROLLE_LIVE'),
+  rolleYoutube: env('DISCORD_ROLLE_YOUTUBE'),
+  rolleBluesky: env('DISCORD_ROLLE_BLUESKY'),
   // Hierhin schickt /test seine Probemeldungen (der Mod-Kanal #notepad).
   // Leer: in den Kanal, in dem /test benutzt wurde.
   kanalTest: env('DISCORD_KANAL_TEST'),
