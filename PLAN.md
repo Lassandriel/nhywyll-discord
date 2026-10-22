@@ -41,3 +41,15 @@ Ersetzt **Sapphire** auf dem Discord-Server **The Aviary** (Nhywyll).
 - [x] GitHub-Repo `Lassandriel/nhywyll-discord` (oeffentlich) angelegt und gepusht, 22.10.2026
 - [ ] Discord-Anwendung anlegen, Token in `.env` (Jean, siehe DEPLOY.md)
 - [ ] Auf CT 103 einrichten, Sapphire danach vom Server werfen
+
+## Kanaele auf The Aviary (nicht geheim)
+
+| Zweck | Kanal-ID |
+|---|---|
+| Willkommen/Abschied (#welcome) | 1129339394067791894 |
+| Twitch live | 1129340984711458836 |
+| YouTube (#clips) | 1310991220805468201 |
+| Bluesky | 1320739525797875812 |
+
+`DISCORD_KANAL_FEEDS` steht in der `.env` auf dem Twitch-Kanal, weil
+`einrichten.sh` es verlangt; die drei eigenen Kanaele gehen vor.
